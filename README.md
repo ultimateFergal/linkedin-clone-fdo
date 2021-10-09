@@ -42,3 +42,30 @@ You don’t have to ever use `eject`. The curated feature set is suitable for sm
 You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
 
 To learn React, check out the [React documentation](https://reactjs.org/).
+
+https://www.youtube.com/watch?v=QaYts9sPmcY
+
+npx create-react-app linkedin-clone-fdo --template redux
+
+rfce vscode extension create component function template
+
+enable emmet div class creation for javascript to react
+
+yarn add npm i @material-ui/core
+
+https://mui.com/components/material-icons/
+yarn add @material-ui/icons
+
+yarn add react-flip-move
+
+firebase login
+
+firebase init
+
+
+npm run build
+
+firebase deploy
+
+Project Console: https://console.firebase.google.com/project/linkedin-clone-fdo/overview
+Hosting URL: https://linkedin-clone-fdo.web.app

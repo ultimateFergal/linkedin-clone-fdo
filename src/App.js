@@ -1,11 +1,56 @@
-import React from 'react';
-import logo from './logo.svg';
-import { Counter } from './features/counter/Counter';
+import React, { useEffect } from 'react';
+/* import logo from './logo.svg';*/
+import { useSelector } from 'react-redux';
 import './App.css';
+import { selectUser } from './features/userSlice';
+import Header from './Header';
+import Sidebar from './Sidebar'
+import Feed from './Feed'
+import Login from './Login'
+import Widgets from './Widgets'
+import { auth } from './firebase';
+import { login, logout } from './features/userSlice'
+import { useDispatch } from 'react-redux'
 
 function App() {
+  const user = useSelector(selectUser)
+  const dispatch = useDispatch()
+
+  useEffect(() => {
+    auth.onAuthStateChanged(userAuth => {
+      if (userAuth) {
+        // user is logged in
+        dispatch(login({
+          email: userAuth.email,
+          uid: userAuth.uid,
+          displayName: userAuth.displayName,
+          photoUrl: userAuth.photoURL,
+        }))
+      } else {
+        // user is logged out
+        dispatch(logout())
+      }
+    })
+  }, [dispatch])
+
   return (
-    <div className="App">
+    <div className="app">
+      <Header />
+
+      {!user ? (
+        <Login />
+      ) : (
+      <div className="app__body">
+        <Sidebar />
+        <Feed />
+        <Widgets />
+      </div>
+      )}
+      
+      
+      
+      
+      {/* 
       <header className="App-header">
         <img src={logo} className="App-logo" alt="logo" />
         <Counter />
@@ -51,7 +96,7 @@ function App() {
           </a>
         </span>
       </header>
-    </div>
+     */}</div>
   );
 }
 
